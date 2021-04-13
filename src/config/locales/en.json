@@ -1,0 +1,20 @@
+{
+	"data_fetched": "Data fetched successfully",
+	"document_updated": "Document updated successfully",
+	"cluster_up": "Success! Elasticsearch cluster is up!",
+	"indexCreated": "Index created successfully",
+	"settings_updated": "Settings updated successfully",
+	"fetch_failed": "Something went worng, please try again",
+	"forbidden": "forbidden!",
+	"index_exist": "Index already exist",
+	"index_not_found": "Index not found",
+	"index_closed": "Index Closed",
+	"index_opened": "Index Opened",
+	"cluster_block_exception": "Cluster block exception",
+	"mapping_added_successfully": "Mapping added successfully",
+	"id_required": "ID is missing",
+	"title_required": "Title is missing",
+	"documentation_created": "Document created successfully",
+	"index_closed_open": "Index is closed, Please open the index",
+	"index_exists": "index_exists"
+}
