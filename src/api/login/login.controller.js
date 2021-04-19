@@ -34,9 +34,8 @@ export const login = async (req, res) => {
 				return sendRsp(res, 200, req.trans('OK'), {
 					data
 				});
-			} 
-				return sendRsp(res, 400, 'Invalid Password');
-			
+			}
+			return sendRsp(res, 400, 'Invalid Password');
 		}
 	} catch (error) {
 		console.log(error);
