@@ -7,17 +7,15 @@ import expressConfig from './src/config/express';
 import routerConfig from './routes';
 import config from './src/config/environment';
 import { mongoDBConnection } from './src/db/mongodb';
-import hbs from 'hbs';
 import { log } from './src/libs/logger';
+import seed from './src/config/seed';
 
 const app = express(),
 	DIST_DIR = __dirname,
 	HTML_FILE = path.join(DIST_DIR, 'index.html');
 const server = http.createServer(app);
 
-app.set('view engine','hbs');
-app.use(express.static(path.join(__dirname,'./src/public')));
-app.set('views', path.join(__dirname, './src/views'));
+app.use(express.static(path.join(__dirname, './src/public')));
 app.get('/', (req, res) => {
 	res.sendFile(HTML_FILE);
 });
@@ -25,6 +23,7 @@ app.get('/', (req, res) => {
 mongoDBConnection();
 expressConfig(app);
 routerConfig(app);
+seed();
 
 const startServer = () => {
 	server.listen(config.port, config.ip, () => {

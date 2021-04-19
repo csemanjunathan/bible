@@ -1,8 +1,8 @@
 'use strict';
 import express from 'express';
-import { search, upload } from './search.controller';
+import { login } from './login.controller';
 
 const router = express.Router();
 
-router.post('/', upload.none(), search);
+router.post('/login', login);
 export default router;

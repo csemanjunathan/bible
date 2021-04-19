@@ -181,11 +181,7 @@ export const searchES = async (req, res) => {
 		searchpayload.from = skip;
 		console.log(searchpayload);
 
-		const searchESRes = await search(
-			config.elasticSearch.elasticIndex,
-			docType,
-			searchpayload
-		);
+		const searchESRes = await search(config.elasticSearch.elasticIndex, docType, searchpayload);
 
 		if (searchESRes.statusCode !== 200) {
 			return sendRsp(res, 403, req.trans('forbidden'));
