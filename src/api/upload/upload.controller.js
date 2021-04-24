@@ -18,12 +18,12 @@ export const uploadFile = async (req, res) => {
 
     try {
     const { version, language } = req.body;
-    const uploadedPath = req.file.path
+    const uploadedPath = req.files.book_zip.path
 
     const zip = new StreamZip({
         file: uploadedPath,
         storeEntries: true
-    });
+    })
 
     zip.on('ready', () => {
         // Take a look at the files
@@ -31,7 +31,7 @@ export const uploadFile = async (req, res) => {
         var zipDotTxtContents = ''
         for (const entry of Object.values(zip.entries())) {
             const desc = entry.isDirectory ? 'directory' : `${entry.size} bytes`;
-            console.log(desc);
+            //console.log(desc);
             if (!entry.isDirectory) {
                 zipDotTxtContents = zip.entryDataSync(entry.name).toString('utf8')
                 let parsed_json = JSON.parse(zipDotTxtContents);
@@ -39,8 +39,8 @@ export const uploadFile = async (req, res) => {
                 parsed_json.forEach((item, index) => {
                     item.version = version
                     item.language = language
-                    console.log(item)
-                    console.log('***************************************')
+                    //console.log(item)
+                    //console.log('***************************************')
                     resourceModel['book'].create({
                         item
                     });
@@ -50,12 +50,12 @@ export const uploadFile = async (req, res) => {
         zip.close()
     })
     res.send('Success !')
-    } catch (error) {
+    } catch (error) { console.log('error:',error)
         return sendRsp(res, 500, req.trans('fetch_failed'), {}, error);
     }
-};
+}
 
-export const upload = multer({
+export const upload = multer({ 
     dest: '../uploads/zip/',
     fileFilter(req, file, cb) {
         if (!file.originalname.endsWith('.zip')) {

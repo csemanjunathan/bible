@@ -16,5 +16,6 @@
 	"title_required": "Title is missing",
 	"documentation_created": "Document created successfully",
 	"index_closed_open": "Index is closed, Please open the index",
-	"index_exists": "index_exists"
+	"index_exists": "index_exists",
+	"OK": "OK"
 }

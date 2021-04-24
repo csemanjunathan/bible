@@ -9,6 +9,8 @@ import config from './src/config/environment';
 import { mongoDBConnection } from './src/db/mongodb';
 import hbs from 'hbs';
 import { log } from './src/libs/logger';
+import cors from 'cors';
+
 
 const app = express(),
 	DIST_DIR = __dirname,
@@ -21,7 +23,7 @@ app.set('views', path.join(__dirname, './src/views'));
 app.get('/', (req, res) => {
 	res.sendFile(HTML_FILE);
 });
-
+app.use(cors());
 mongoDBConnection();
 expressConfig(app);
 routerConfig(app);
