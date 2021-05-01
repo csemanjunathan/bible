@@ -7,20 +7,28 @@
 'use strict';
 import { resourceModel } from '../../config/resource';
 import { sendRsp, responseHandler } from '../../utils/response';
-const multer = require('multer')
+const multer = require('multer');
 
-export const index = async (req, res) => {
-	res.render('search');
-};
-
+export const versions = async (req,res) => {
+    try{
+        // return sendRsp(res, 200, req.trans('OK'), {
+        //     ...response
+        // }) 
+    } catch(error){
+        // console.log(error)
+        // return sendRsp(res, 500, req.trans('fetch_failed'), {}, error);
+    }
+}
 
 export const search = async (req, res) => {
     try {
-        const { search_word, search_version } = req.body;
+        //console.log(req.query);
+        const { search_word } = req.query;
         const page = parseInt(req.query.page, 10) || 1;
-        const limit = parseInt(req.query.limit, 10) || 10;
+        const limit = parseInt(req.query.limit, 10) || 100;
         const skip = limit * page - limit;
         const sort = {
+            chapter: req.query.sort ? req.query.sort : 1,
             verse: req.query.sort ? req.query.sort : 1
         };
         req.options = {
@@ -30,8 +38,7 @@ export const search = async (req, res) => {
         };
         
         let queryObj = {}; 
-        
-        //console.log(search_word.indexOf(":"));
+     
 
         if(search_word.indexOf(":") > 0){
 
@@ -86,22 +93,22 @@ export const search = async (req, res) => {
 };
 
 export const upload = multer({
-    fileFilter (req, file, cb) {
-        if(!file.originalname.endsWith('.zip')){
-            return cb(new Error('Please upload zip file'))
-        }
-        cb(undefined,true)
-    }
+	fileFilter (req, file, cb) {
+		if (!file.originalname.endsWith('.zip')) {
+			return cb(new Error('Please upload zip file'));
+		}
+		cb(true);
+	}
 });
 
 export const countRows = (modelName, queryObj) => {
 	return new Promise((resolve, reject) => {
 		resourceModel[modelName]
 			.countDocuments(queryObj)
-			.then(count => {
+			.then((count) => {
 				resolve(count);
 			})
-			.catch(error => {
+			.catch((error) => {
 				reject(error);
 			});
 	});

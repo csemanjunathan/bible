@@ -1,29 +1,29 @@
 .form-title {
-    color: #000;
-    margin-bottom: 15px;
-    font-size: 20px;
-    font-weight: bold;
+	color: #000;
+	margin-bottom: 15px;
+	font-size: 20px;
+	font-weight: bold;
 }
 .form-outer {
-    margin-top: 110px;
+	margin-top: 110px;
 }
 
 .result-set ul {
-    list-style: none;
-    padding: 0px;
+	list-style: none;
+	padding: 0px;
 }
 .lists {
-    background: #dee1f3;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 10px;
-    margin-bottom: 15px;
+	background: #dee1f3;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 10px;
+	margin-bottom: 15px;
 }
 
 .lists a {
-    text-decoration: underline;
+	text-decoration: underline;
 }
-.sub-text{
-    color: #9c9494;
-    font-size: 12px;
+.sub-text {
+	color: #9c9494;
+	font-size: 12px;
 }

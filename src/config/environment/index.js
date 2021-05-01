@@ -39,6 +39,9 @@ const all = {
 		host: process.env.REDIS_HOST,
 		port: process.env.REDIS_PORT,
 		password: process.env.REDIS_PASSWORD
+	},
+	jwt: {
+		secret: process.env.JWT_SECRET || 'hZcWLt7vUmyeSuHsFPFVpHJlqpQokI1JzzjfitdcOdnUTu3L7Jn8OeIdvW7M0j0B'
 	}
 };
 

@@ -3,40 +3,30 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-const book = new Schema(
+const adminUser = new Schema(
 	{
-		book: {
+		name: {
 			type: String,
 			trim: true,
 			index: true
 		},
-		tags: {
-			type: Array
-			// trim: true,
-			// index: true
+		email: {
+			type: String,
+			trim: true,
+			index: true
 		},
-		chapter: {
+		password: {
+			type: String,
+			trim: true,
+			index: true
+		},
+		creator_id: {
 			type: Number,
 			trim: true,
 			index: true
 		},
-		verse: {
+		updator_id: {
 			type: Number,
-			trim: true,
-			index: true
-		},
-		text: {
-			type: String,
-			trim: true,
-			index: true
-		},
-		version: {
-			type: String,
-			trim: true,
-			index: true
-		},
-		language: {
-			type: String,
 			trim: true,
 			index: true
 		}
@@ -49,4 +39,4 @@ const book = new Schema(
 	}
 );
 
-export default mongoose.model('book', book);
+export default mongoose.model('adminUser', adminUser);
