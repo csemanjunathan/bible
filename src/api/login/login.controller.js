@@ -12,16 +12,13 @@ const multer = require('multer');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-export const test = async (req,res) => {
-	console.log(req.body);
-	console.log(req.files);
-}
+
 
 export const login = async (req, res) => { 
 	try {
 		const { email, password } = req.body;
 		const adminUser = await resourceModel.adminUser.findOne({ email });
-		console.log(adminUser);
+		
 		if (adminUser) {
 			// check user password with hashed password stored in the database
 			const validPassword = await bcrypt.compare(password, adminUser.password);
@@ -32,7 +29,7 @@ export const login = async (req, res) => {
 				const { secret } = config.jwt;
 				const token = jwt.sign(payload, secret, options);
 
-				// console.log('TOKEN', token);
+				
 				result = adminUser;
 				let access_token = token;
 				const data = { result, access_token };
@@ -43,7 +40,7 @@ export const login = async (req, res) => {
 			return sendRsp(res, 400, 'Invalid Password');
 		}
 	} catch (error) {
-		console.log(error);
+		
 		return sendRsp(res, 500, req.trans('fetch_failed'), {}, error);
 	}
 };

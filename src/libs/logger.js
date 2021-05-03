@@ -5,7 +5,7 @@ const path = require('path');
 export const log = createLogger({
 	format: combine(
 		label({
-			label: 'GudSho ES Service'
+			label: 'Bible Service'
 		}),
 		timestamp(),
 		prettyPrint()

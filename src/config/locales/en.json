@@ -19,5 +19,6 @@
 	"index_exists": "index_exists",
 	"OK": "OK",
 	"bad_gateway": "bad_gateway",
-	"jwt_token_expired": "jwt_token_expired"
+	"jwt_token_expired": "jwt_token_expired",
+	"success": "success"
 }

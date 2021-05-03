@@ -9,20 +9,31 @@ import { resourceModel } from '../../config/resource';
 import { sendRsp, responseHandler } from '../../utils/response';
 const multer = require('multer');
 
-export const versions = async (req,res) => {
-    try{
-        // return sendRsp(res, 200, req.trans('OK'), {
-        //     ...response
-        // }) 
+export const getVersions = async (req,res) => {
+    try{        
+        const data = await resourceModel['book'].distinct('version');
+    
+        return sendRsp(res, 200, req.trans('success'), {data});  
     } catch(error){
-        // console.log(error)
-        // return sendRsp(res, 500, req.trans('fetch_failed'), {}, error);
+       
+        return sendRsp(res, 500, req.trans('fetch_failed'), {}, error);
+    }
+}
+
+export const deleteVersions = async (req,res) => {
+    try{        
+        const data = await resourceModel['book'].deleteMany({version:req.params.version});
+        
+        return sendRsp(res, 200, req.trans('success'));  
+    } catch(error){
+        
+        return sendRsp(res, 500, req.trans('fetch_failed'), {}, error);
     }
 }
 
 export const search = async (req, res) => {
     try {
-        //console.log(req.query);
+      
         const { search_word } = req.query;
         const page = parseInt(req.query.page, 10) || 1;
         const limit = parseInt(req.query.limit, 10) || 100;
@@ -80,14 +91,14 @@ export const search = async (req, res) => {
                 req.options
             )
             .lean();
-        console.log(books)
+       
         const pages = Math.ceil(booksCount / req.options.limit);
         const response = responseHandler(books, booksCount, page, pages);
         return sendRsp(res, 200, req.trans('OK'), {
             ...response
         });
     } catch (error) {
-        console.log(error)
+        
         return sendRsp(res, 500, req.trans('fetch_failed'), {}, error);
     }
 };

@@ -13,15 +13,12 @@ export const index = async (req, res) => {
 	return sendRsp(res, 200, req.trans('OK'));
 };
 
-export const test = async (req,res) => { 
-	console.log(req.body) 
-}
+
 
 export const uploadFile = async (req, res, next) => {  
-//console.log(req.body); 
+
 	try {
 		const { version, language } = req.body;
-
 		const uploadedPath = req.files.book_zip.path;
 
 		const zip = new StreamZip({
@@ -31,7 +28,7 @@ export const uploadFile = async (req, res, next) => {
 		
 		zip.on('ready', () => {
 			// Take a look at the files
-			console.log(`Entries read: ${zip.entriesCount}`);
+			
 			var zipDotTxtContents = '';
 			for (const entry of Object.values(zip.entries())) {
 				const desc = entry.isDirectory ? 'directory' : `${entry.size} bytes`;
@@ -61,8 +58,4 @@ export const uploadFile = async (req, res, next) => {
 	} catch (error) {
 		return sendRsp(res, 500, req.trans('fetch_failed'), {}, error);
 	}
-};
-
-
-
-
+}

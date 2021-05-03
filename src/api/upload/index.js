@@ -8,6 +8,4 @@ const router = express.Router();
 router.get('/', isAuth(), index);
 router.post('/', uploadFile); 
 
-// router.post('/', upload.single('book_zip'), uploadFile); 
-// router.post('/test', test) 
 export default router; 

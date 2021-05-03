@@ -11,7 +11,7 @@ export default async () => {
 	const promises = [];
 	const adminUsersCount = await adminUserModel.countDocuments();
 	const salt = await bcrypt.genSalt(10);
-	console.log(adminUsersCount);
+	
 	const adminUsers = [
 		{
 			name: 'Admin',

@@ -3,11 +3,11 @@ export const swaggerUI = {
 	swagger: '2.0',
 	info: {
 		version: '1.0.0',
-		title: 'GudSho Swagger',
-		description: 'Gudsho Swagge API documentation',
+		title: 'Bible Swagger',
+		description: 'Bible Swagge API documentation',
 		license: {
-			name: 'GudSho',
-			url: 'https://www.gudsho.com/'
+			name: 'Bible',
+			url: 'https://www.bibleask.com/'
 		}
 	},
 	servers: {
@@ -45,74 +45,10 @@ export const swaggerUI = {
 		}
 	],
 	paths: {
-		'/sho-details': {
-			post: {
-				tags: ['Sho Details'],
-				summary: 'Create Sho Details',
-				parameters: [
-					{
-						name: 'username',
-						in: 'body',
-						description: 'email',
-						schema: {
-							$ref: '#/definitions/ShoDetails'
-						}
-					}
-				],
-				produces: ['application/json'],
-				responses: {
-					201: {
-						description: 'Success',
-						schema: {
-							$ref: '#/responses/CreateShoDetailSuccessResponse'
-						}
-					},
-					401: {
-						description: 'Token Expired',
-						schema: {
-							$ref: '#/responses/TokenExpired'
-						}
-					},
-					500: {
-						description: 'Server Error',
-						schema: {
-							$ref: '#/responses/ServerError'
-						}
-					},
-					501: {
-						description: 'Not Implemented',
-						schema: {
-							$ref: '#/responses/ServerError'
-						}
-					}
-				}
-			}
-		}
+		
 	},
 	definitions: {
-		ShoDetails: {
-			required: ['sho_id', 'title', 'slug', 'studio_id', 'description', 'thumbnail_image'],
-			properties: {
-				sho_id: {
-					type: 'string'
-				},
-				title: {
-					type: 'string'
-				},
-				slug: {
-					type: 'string'
-				},
-				studio_id: {
-					type: 'string'
-				},
-				description: {
-					type: 'string'
-				},
-				thumbnail_image: {
-					type: 'string'
-				}
-			}
-		}
+		
 	},
 	responses: {
 		CreateShoDetailSuccessResponse: {
@@ -122,7 +58,7 @@ export const swaggerUI = {
 					message: 'OK'
 				},
 				responses: {
-					'sho-details': {}
+				
 				}
 			}
 		},
